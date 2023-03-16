@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lat.jack.employee.employee.Controllers.GeneralView">
+   <children>
+      <TabPane prefHeight="600.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Employee List">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BorderPane prefHeight="570.0" prefWidth="1000.0">
+                           <center>
+                              <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                <columns>
+                                  <TableColumn prefWidth="58.0" text="ID" />
+                                  <TableColumn prefWidth="109.0" text="Name" />
+                                    <TableColumn prefWidth="105.0" text="Phone Number" />
+                                    <TableColumn prefWidth="88.0" text="Join Date" />
+                                    <TableColumn prefWidth="75.0" text="Role" />
+                                    <TableColumn prefWidth="109.0" text="Salary" />
+                                    <TableColumn prefWidth="55.0" text="View" />
+                                </columns>
+                              </TableView>
+                           </center>
+                           <top>
+                              <HBox alignment="CENTER" prefHeight="12.0" prefWidth="869.0" spacing="12.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <TextField prefHeight="25.0" prefWidth="194.0" promptText="Enter Employee ID" />
+                                    <ComboBox prefHeight="25.0" prefWidth="76.0" />
+                                    <Button mnemonicParsing="false" text="Search" />
+                                 </children>
+                              </HBox>
+                           </top>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="View Employee">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BorderPane prefHeight="570.0" prefWidth="1000.0">
+                           <center>
+                              <HBox BorderPane.alignment="CENTER">
+                                 <children>
+                                    <VBox prefHeight="522.0" prefWidth="574.0">
+                                       <children>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="579.0" text="Employee Details" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <VBox>
+                                             <children>
+                                                <HBox prefHeight="17.0" prefWidth="77.0">
+                                                   <children>
+                                                      <Label text="First Name: " />
+                                                      <Label text="{FIRST NAME VALUE}" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="0.0" prefWidth="600.0">
+                                                   <children>
+                                                      <Label text="Last Name: " />
+                                                      <Label text="{LAST_NAME_VALUE}" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="0.0" prefWidth="600.0">
+                                                   <children>
+                                                      <Label text="Email Address: " />
+                                                      <Label text="{EMPLOYEE_EMAIL_ADDRESS_VALUE}" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="0.0" prefWidth="600.0">
+                                                   <children>
+                                                      <Label text="Phone Number: " />
+                                                      <Label text="{MOBILE_NUMBER_VALUE}" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="0.0" prefWidth="600.0">
+                                                   <children>
+                                                      <Label text="Role Name: " />
+                                                      <Label text="{ROLE_NAME_VALUE}" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="0.0" prefWidth="600.0">
+                                                   <children>
+                                                      <Label text="Role Category: " />
+                                                      <Label text="{ROLE_CATEGORY_VALUE}" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="579.0" text="Employee Benefits" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <VBox>
+                                             <children>
+                                                <HBox prefHeight="0.0" prefWidth="600.0">
+                                                   <children>
+                                                      <Label text="House Allowance: " />
+                                                      <Label text="{HOUSE_ALLOWANCE_VALUE}" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="1.0" prefWidth="600.0">
+                                                   <children>
+                                                      <Label text="Traveling Allowance: " />
+                                                      <Label text="{TRAVELING_ALLOWANCE_VALUE}" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="1.0" prefWidth="600.0">
+                                                   <children>
+                                                      <Label text="Health Allowance: " />
+                                                      <Label text="{HEALTH_ALLOWANCE_VALUE}" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="522.0" prefWidth="490.0">
+                                       <children>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+                                 </padding>
+                              </HBox>
+                           </center>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
