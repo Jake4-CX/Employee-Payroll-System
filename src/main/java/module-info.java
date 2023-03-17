@@ -3,6 +3,7 @@ module lat.jack.employee.employee {
     requires javafx.fxml;
     requires java.sql;
     requires org.xerial.sqlitejdbc;
+    requires bcrypt;
 
 
     opens lat.jack.employee.employee to javafx.fxml;

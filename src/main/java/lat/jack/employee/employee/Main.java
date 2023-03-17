@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lat.jack.employee.employee.Controllers.GeneralView;
-import lat.jack.employee.employee.Database.Database;
 import lat.jack.employee.employee.Managers.ApplicationManager;
 
 import java.io.IOException;

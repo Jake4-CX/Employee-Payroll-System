@@ -44,6 +44,13 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.40.1.0</version>
         </dependency>
+
+        <!-- bCrypt password hashing -->
+        <dependency>
+            <groupId>at.favre.lib</groupId>
+            <artifactId>bcrypt</artifactId>
+            <version>0.10.2</version>
+        </dependency>
     </dependencies>
 
     <build>
