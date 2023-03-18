@@ -48,7 +48,7 @@ public class User {
         }
     }
 
-    public static Object checkUser(String userName, String userPassword) { // Used for user login
+    public static int checkUser(String userName, String userPassword) { // Used for user login
         Database.checkConnection();
 
         String query = "SELECT * FROM Users WHERE userName = ? LIMIT 1";
@@ -71,7 +71,7 @@ public class User {
             e.printStackTrace();
         }
 
-        return null;
+        return -1;
     }
 
     public static ResultSet getUsers() {
