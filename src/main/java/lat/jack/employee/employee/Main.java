@@ -52,4 +52,12 @@ public class Main extends Application {
     public static ApplicationManager getApplicationManager() {
         return applicationManager;
     }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
 }

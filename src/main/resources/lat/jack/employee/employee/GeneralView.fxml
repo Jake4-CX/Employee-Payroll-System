@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml" fx:controller="lat.jack.employee.employee.Controllers.GeneralView">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lat.jack.employee.employee.Controllers.GeneralView">
    <children>
-      <TabPane prefHeight="600.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tabPaneGeneral" prefHeight="600.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Employee List">
             <content>
@@ -39,11 +39,16 @@
                               </TableView>
                            </center>
                            <top>
-                              <HBox alignment="CENTER" prefHeight="12.0" prefWidth="869.0" spacing="12.0" BorderPane.alignment="CENTER">
+                              <HBox alignment="CENTER_RIGHT" prefHeight="12.0" prefWidth="869.0" spacing="12.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <TextField prefHeight="25.0" prefWidth="194.0" promptText="Enter Employee ID" />
-                                    <ComboBox prefHeight="25.0" prefWidth="76.0" />
-                                    <Button mnemonicParsing="false" text="Search" />
+                                    <HBox prefHeight="25.0" prefWidth="483.0" spacing="10.0">
+                                       <children>
+                                          <TextField prefHeight="25.0" prefWidth="177.0" promptText="Enter Employee ID" />
+                                          <ComboBox prefHeight="25.0" prefWidth="84.0" />
+                                          <Button mnemonicParsing="false" text="Search" />
+                                          <Label fx:id="labelWelcomeName" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="135.0" text="Welcome, {USER_NAME}!" textAlignment="CENTER" />
+                                       </children>
+                                    </HBox>
                                  </children>
                               </HBox>
                            </top>
@@ -52,7 +57,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="View Employee">
+          <Tab id="tabViewEmployee" fx:id="tabViewEmployee" text="View Employee">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>

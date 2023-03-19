@@ -5,8 +5,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import lat.jack.employee.employee.Database.Constructs.*;
 import lat.jack.employee.employee.Database.Database;
+import lat.jack.employee.employee.Entities.Users;
 import lat.jack.employee.employee.Main;
 
 import java.io.IOException;
@@ -15,7 +15,9 @@ import java.util.Objects;
 public class ApplicationManager {
 
     private Database database;
-    private final Main main;
+    private static Main main;
+
+    protected static Users currentUser;
 
     public ApplicationManager(Main main) {
 
@@ -23,17 +25,15 @@ public class ApplicationManager {
         this.database = new Database();
 
         // Create tables if not exists
-        new Employee();
-        new Addresses();
-        new EmployeeRole();
-        new RoleCategory();
-        new RoleBenefits();
-        new User(); // Used for login - not related to Employees
         System.out.println("ApplicationManager initialized!");
     }
 
     public Database getDatabase() {
         return database;
+    }
+
+    public static Main getMain() {
+        return main;
     }
 
     public static void switchScene(String fxmlPath, Node node) {
@@ -42,6 +42,19 @@ public class ApplicationManager {
             Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource(fxmlPath)));
             Stage stage = (Stage) node.getScene().getWindow(); // Get stage from node
             stage.setScene(new Scene(root, 520, 820));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+
+        }
+    }
+
+    public static void switchScene(String fxmlPath, Node node, int width, int height) {
+
+        try {
+            Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource(fxmlPath)));
+            Stage stage = (Stage) node.getScene().getWindow(); // Get stage from node
+            stage.setScene(new Scene(root, width, height));
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -59,5 +72,14 @@ public class ApplicationManager {
             throw new RuntimeException(e);
 
         }
+    }
+
+    public static Users getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(Users user) {
+        System.out.println("UserID: " + user.getId());
+        currentUser = user;
     }
 }

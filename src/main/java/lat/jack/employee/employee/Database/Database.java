@@ -1,34 +1,32 @@
 package lat.jack.employee.employee.Database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.table.TableUtils;
+import lat.jack.employee.employee.Entities.Users;
+
 import java.sql.SQLException;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Database {
 
-    private static Connection connection;
-    private Timer keepAlive;
+    private static ConnectionSource connectionSource;
+    private static final String databaseURL = "jdbc:sqlite:database.db";
+    private static Dao<Users, Integer> userDao;
 
-public Database() {
-
-        keepAlive = new Timer();
-        keepAlive.schedule(new TimerTask() { // Timer - to keep alive connection whilst application is open
-            @Override
-            public void run() {
-                checkConnection();
-
-            }
-        }, 0, 60 * 1000); // in ms
+    public Database() {
+        getNewConnectionSource();
 
     }
 
-    public static void getNewConnection() {
+    private void getNewConnectionSource() {
 
         try {
-            Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:database.db");
+            Class.forName("com.j256.ormlite.jdbc.db.SqliteDatabaseType");
+            connectionSource = new JdbcConnectionSource(databaseURL);
+            userDao = DaoManager.createDao(connectionSource, Users.class);
+            TableUtils.createTableIfNotExists(connectionSource, Users.class);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,20 +35,20 @@ public Database() {
 
     }
 
-    public static Connection getConnection() {
-        return connection;
+    public static Dao<Users, Integer> getUserDao() {
+
+        if (userDao == null) {
+            try {
+                userDao = DaoManager.createDao(connectionSource, Users.class);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return userDao;
     }
 
-    public static void checkConnection() {
-
-        try {
-            if (connection == null || connection.isClosed()) {
-                getNewConnection();
-            } else {
-                connection.createStatement().execute("SELECT 1");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    public static ConnectionSource getConnectionSource() {
+        return connectionSource;
     }
 }
