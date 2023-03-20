@@ -30,6 +30,9 @@ public class Addresses {
         this.country = country;
     }
 
+    public Addresses() {
+    }
+
     public String getStreetName() {
         return streetName;
     }

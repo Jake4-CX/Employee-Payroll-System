@@ -34,6 +34,9 @@ public class EmployeesBenefits {
         this.healthAllowance = healthAllowance;
     }
 
+    public EmployeesBenefits() {
+    }
+
     public int getId() {
         return id;
     }

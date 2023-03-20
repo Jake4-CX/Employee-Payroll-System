@@ -13,10 +13,10 @@ public class EmployeeRoles {
     @DatabaseField()
     private Float startingSalary;
 
-    @DatabaseField()
+    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
     private RoleCategories roleCategory;
 
-    @DatabaseField()
+    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
     private RoleBenefits roleBenefits;
 
     public EmployeeRoles(String roleName, Float startingSalary, RoleCategories roleCategory, RoleBenefits roleBenefits) {
@@ -24,6 +24,9 @@ public class EmployeeRoles {
         this.startingSalary = startingSalary;
         this.roleCategory = roleCategory;
         this.roleBenefits = roleBenefits;
+    }
+
+    public EmployeeRoles() {
     }
 
     public int getId() {

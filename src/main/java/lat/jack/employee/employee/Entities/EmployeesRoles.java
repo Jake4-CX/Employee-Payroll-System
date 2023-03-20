@@ -7,15 +7,18 @@ public class EmployeesRoles {
     @DatabaseField(generatedId = true)
     private int id;
 
-    @DatabaseField()
+    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
     private EmployeeRoles employeeRole;
 
-    @DatabaseField()
+    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
     private EmployeesBenefits employeeBenefits;
 
     public EmployeesRoles(EmployeeRoles employeeRole, EmployeesBenefits employeeBenefits) {
         this.employeeRole = employeeRole;
         this.employeeBenefits = employeeBenefits;
+    }
+
+    public EmployeesRoles() {
     }
 
     public int getId() {

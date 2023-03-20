@@ -22,6 +22,9 @@ public class RoleBenefits {
         this.healthAllowance = healthAllowance;
     }
 
+    public RoleBenefits() {
+    }
+
     public int getId() {
         return id;
     }

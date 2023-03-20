@@ -24,16 +24,23 @@ public class Employees {
     @DatabaseField()
     private Date hireDate;
 
-    @DatabaseField()
+    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
     private Addresses address;
 
-    public Employees(String firstName, String lastName, String emailAddress, String phoneNumber, Date hireDate, Addresses address) {
+    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
+    private EmployeesRoles employeeRole;
+
+    public Employees(String firstName, String lastName, String emailAddress, String phoneNumber, Date hireDate, Addresses address, EmployeesRoles employeeRole) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
         this.hireDate = hireDate;
         this.address = address;
+        this.employeeRole = employeeRole;
+    }
+
+    public Employees() {
     }
 
     public int getId() {
@@ -86,5 +93,13 @@ public class Employees {
 
     public void setAddress(Addresses address) {
         this.address = address;
+    }
+
+    public EmployeesRoles getEmployeeRole() {
+        return employeeRole;
+    }
+
+    public void setEmployeeRole(EmployeesRoles employeeRole) {
+        this.employeeRole = employeeRole;
     }
 }

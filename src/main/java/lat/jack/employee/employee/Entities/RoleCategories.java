@@ -14,6 +14,9 @@ public class RoleCategories {
         this.categoryName = categoryName;
     }
 
+    public RoleCategories() {
+    }
+
     public int getId() {
         return id;
     }

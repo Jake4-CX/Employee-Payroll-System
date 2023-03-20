@@ -26,29 +26,37 @@
                      <children>
                         <BorderPane prefHeight="570.0" prefWidth="1000.0">
                            <center>
-                              <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                                <columns>
-                                  <TableColumn prefWidth="58.0" text="ID" />
-                                  <TableColumn prefWidth="109.0" text="Name" />
-                                    <TableColumn prefWidth="105.0" text="Phone Number" />
-                                    <TableColumn prefWidth="88.0" text="Join Date" />
-                                    <TableColumn prefWidth="75.0" text="Role" />
-                                    <TableColumn prefWidth="109.0" text="Salary" />
-                                    <TableColumn prefWidth="55.0" text="View" />
-                                </columns>
-                              </TableView>
+                              <HBox spacing="15.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <TableView prefHeight="545.0" prefWidth="790.0">
+                                      <columns>
+                                        <TableColumn prefWidth="75.0" text="Employee ID" />
+                                        <TableColumn prefWidth="92.0" text="Name" />
+                                          <TableColumn prefWidth="91.0" text="Phone Number" />
+                                          <TableColumn prefWidth="59.0" text="Join Date" />
+                                          <TableColumn prefWidth="89.0" text="Role" />
+                                          <TableColumn prefWidth="83.0" text="Salary" />
+                                          <TableColumn prefWidth="110.0" text="View" />
+                                      </columns>
+                                    </TableView>
+                                    <AnchorPane prefHeight="545.0" prefWidth="182.0">
+                                       <children>
+                                          <ComboBox layoutY="23.0" prefHeight="25.0" prefWidth="189.0" />
+                                          <Label layoutY="6.0" text="Search Category: " />
+                                          <TextField layoutY="61.0" prefHeight="25.0" prefWidth="130.0" />
+                                          <Button fx:id="buttonSearch" layoutX="137.0" layoutY="61.0" mnemonicParsing="false" prefHeight="25.0" text="Search" />
+                                          <Button fx:id="buttonAddEmployee" layoutX="8.0" layoutY="456.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="173.0" text="Add Employee" />
+                                          <Button fx:id="buttonAddCategory" layoutX="96.0" layoutY="408.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="85.0" text="Add Category" />
+                                          <Button fx:id="buttonAddRole" layoutX="8.0" layoutY="408.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="85.0" text="Add Role" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </HBox>
                            </center>
                            <top>
                               <HBox alignment="CENTER_RIGHT" prefHeight="12.0" prefWidth="869.0" spacing="12.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <HBox prefHeight="25.0" prefWidth="483.0" spacing="10.0">
-                                       <children>
-                                          <TextField prefHeight="25.0" prefWidth="177.0" promptText="Enter Employee ID" />
-                                          <ComboBox prefHeight="25.0" prefWidth="84.0" />
-                                          <Button mnemonicParsing="false" text="Search" />
-                                          <Label fx:id="labelWelcomeName" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="135.0" text="Welcome, {USER_NAME}!" textAlignment="CENTER" />
-                                       </children>
-                                    </HBox>
+                                    <Label fx:id="labelWelcomeName" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="135.0" text="Welcome, {USER_NAME}!" textAlignment="CENTER" />
                                  </children>
                               </HBox>
                            </top>
