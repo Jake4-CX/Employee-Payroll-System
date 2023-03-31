@@ -1,4 +1,4 @@
-package lat.jack.employee.employee.Controllers.RoleCategory;
+package lat.jack.employee.employee.Events.RoleCategory;
 
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.PreparedQuery;
@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import lat.jack.employee.employee.Controllers.AddRoleCategoryView;
 import lat.jack.employee.employee.Database.Database;
 import lat.jack.employee.employee.Entities.RoleCategories;
-import lat.jack.employee.employee.Models.RoleCategory;
 
 import java.sql.SQLException;
 

@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import lat.jack.employee.employee.Controllers.RoleCategory.onAddCategoryButtonClick;
+import lat.jack.employee.employee.Events.RoleCategory.onAddCategoryButtonClick;
 
 public class AddRoleCategoryView {
 

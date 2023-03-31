@@ -11,7 +11,7 @@ public class EmployeeRoles {
     private String roleName;
 
     @DatabaseField()
-    private Float startingSalary;
+    private double startingSalary;
 
     @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
     private RoleCategories roleCategory;
@@ -41,11 +41,11 @@ public class EmployeeRoles {
         this.roleName = roleName;
     }
 
-    public Float getStartingSalary() {
+    public double getStartingSalary() {
         return startingSalary;
     }
 
-    public void setStartingSalary(Float startingSalary) {
+    public void setStartingSalary(double startingSalary) {
         this.startingSalary = startingSalary;
     }
 

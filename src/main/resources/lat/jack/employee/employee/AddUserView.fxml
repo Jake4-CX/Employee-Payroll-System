@@ -89,7 +89,7 @@
                   <HBox prefHeight="5.0" prefWidth="326.0">
                      <children>
                         <Label prefHeight="25.0" prefWidth="67.0" text="Country:" />
-                        <TextField fx:id="inputStreetCountry" prefHeight="25.0" prefWidth="260.0" />
+                        <ComboBox fx:id="inputStreetCountry" prefWidth="260.0" />
                      </children>
                   </HBox>
                </children>

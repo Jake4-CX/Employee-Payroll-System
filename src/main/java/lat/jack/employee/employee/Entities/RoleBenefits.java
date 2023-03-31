@@ -8,15 +8,15 @@ public class RoleBenefits {
     private int id;
 
     @DatabaseField()
-    private Float housingAllowance;
+    private double housingAllowance;
 
     @DatabaseField()
-    private Float travelingAllowance;
+    private double travelingAllowance;
 
     @DatabaseField()
-    private Float healthAllowance;
+    private double healthAllowance;
 
-    public RoleBenefits(Float housingAllowance, Float travelingAllowance, Float healthAllowance) {
+    public RoleBenefits(double housingAllowance, double travelingAllowance, double healthAllowance) {
         this.housingAllowance = housingAllowance;
         this.travelingAllowance = travelingAllowance;
         this.healthAllowance = healthAllowance;
@@ -29,27 +29,27 @@ public class RoleBenefits {
         return id;
     }
 
-    public Float getHousingAllowance() {
+    public double getHousingAllowance() {
         return housingAllowance;
     }
 
-    public void setHousingAllowance(Float housingAllowance) {
+    public void setHousingAllowance(double housingAllowance) {
         this.housingAllowance = housingAllowance;
     }
 
-    public Float getTravelingAllowance() {
+    public double getTravelingAllowance() {
         return travelingAllowance;
     }
 
-    public void setTravelingAllowance(Float travelingAllowance) {
+    public void setTravelingAllowance(double travelingAllowance) {
         this.travelingAllowance = travelingAllowance;
     }
 
-    public Float getHealthAllowance() {
+    public double getHealthAllowance() {
         return healthAllowance;
     }
 
-    public void setHealthAllowance(Float healthAllowance) {
+    public void setHealthAllowance(double healthAllowance) {
         this.healthAllowance = healthAllowance;
     }
 }

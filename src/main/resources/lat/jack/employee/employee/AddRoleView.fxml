@@ -25,7 +25,7 @@
                   <HBox prefHeight="66.0" prefWidth="340.0">
                      <children>
                         <Label prefHeight="25.0" prefWidth="105.0" text="Starting Salary: " />
-                        <TextField fx:id="inputRoleSalary" prefHeight="25.0" prefWidth="260.0" />
+                        <TextField fx:id="inputRoleSalary" prefHeight="25.0" prefWidth="260.0" text="0.00" />
                      </children>
                   </HBox>
                   <HBox prefHeight="66.0" prefWidth="340.0">
@@ -41,19 +41,19 @@
                   <HBox prefHeight="66.0" prefWidth="340.0">
                      <children>
                         <Label prefHeight="25.0" prefWidth="112.0" text="Housing Allowance: " />
-                        <TextField fx:id="displayHousingAllowance" disable="true" editable="false" prefHeight="25.0" prefWidth="215.0" />
+                        <TextField fx:id="displayHousingAllowance" disable="true" editable="false" prefHeight="25.0" prefWidth="215.0" text="0.00" />
                      </children>
                   </HBox>
                   <HBox prefHeight="66.0" prefWidth="340.0">
                      <children>
                         <Label prefHeight="25.0" prefWidth="112.0" text="Traveling Allowance: " />
-                        <TextField fx:id="displayTravelingAllowance" disable="true" editable="false" prefHeight="25.0" prefWidth="215.0" />
+                        <TextField fx:id="inputTravelingAllowance" prefHeight="25.0" prefWidth="215.0" text="0.00" />
                      </children>
                   </HBox>
                   <HBox prefHeight="66.0" prefWidth="340.0">
                      <children>
                         <Label prefHeight="25.0" prefWidth="112.0" text="Health Allowance: " />
-                        <TextField fx:id="displayHealthAllowance" disable="true" editable="false" prefHeight="25.0" prefWidth="215.0" />
+                        <TextField fx:id="displayHealthAllowance" disable="true" editable="false" prefHeight="25.0" prefWidth="215.0" text="0.00" />
                      </children>
                   </HBox>
                </children>

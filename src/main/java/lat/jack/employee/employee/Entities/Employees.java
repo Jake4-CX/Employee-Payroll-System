@@ -28,9 +28,9 @@ public class Employees {
     private Addresses address;
 
     @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
-    private EmployeesRoles employeeRole;
+    private EmployeeRoles employeeRole;
 
-    public Employees(String firstName, String lastName, String emailAddress, String phoneNumber, Date hireDate, Addresses address, EmployeesRoles employeeRole) {
+    public Employees(String firstName, String lastName, String emailAddress, String phoneNumber, Date hireDate, Addresses address, EmployeeRoles employeeRole) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
@@ -95,11 +95,11 @@ public class Employees {
         this.address = address;
     }
 
-    public EmployeesRoles getEmployeeRole() {
+    public EmployeeRoles getEmployeeRole() {
         return employeeRole;
     }
 
-    public void setEmployeeRole(EmployeesRoles employeeRole) {
+    public void setEmployeeRole(EmployeeRoles employeeRole) {
         this.employeeRole = employeeRole;
     }
 }
