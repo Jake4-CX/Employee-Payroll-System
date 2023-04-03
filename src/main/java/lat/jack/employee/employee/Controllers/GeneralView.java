@@ -1,6 +1,9 @@
 package lat.jack.employee.employee.Controllers;
 
 import com.j256.ormlite.dao.Dao;
+import javafx.beans.property.*;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -73,13 +76,35 @@ public class GeneralView {
             throw new RuntimeException(e);
         }
 
-        // Define relative table values
-        employeeIDColumn.setCellValueFactory(new PropertyValueFactory<Employees, Integer>("id"));
-        employeeNameColumn.setCellValueFactory(new PropertyValueFactory<Employees, String>("firstName"));
-        employeePhoneColumn.setCellValueFactory(new PropertyValueFactory<Employees, String>("phoneNumber"));
-        employeeEmailColumn.setCellValueFactory(new PropertyValueFactory<Employees, String>("emailAddress"));
-        employeeHireDateColumn.setCellValueFactory(new PropertyValueFactory<Employees, Date>("hireDate"));
-        employeeTable.getItems().addAll(employees);
+        // Display employees data in table.
+
+        // Define relative table values.
+
+        employeeIDColumn.setCellValueFactory(cellData -> {
+            int idValue = cellData.getValue().getId();
+            IntegerProperty idProp = new SimpleIntegerProperty(idValue);
+            return idProp.asObject();
+        });
+        employeeNameColumn.setCellValueFactory(cellData -> {
+            String employeeNameValue = cellData.getValue().getFirstName() + " " + cellData.getValue().getLastName();
+            return new SimpleStringProperty(employeeNameValue);
+        });
+        employeePhoneColumn.setCellValueFactory(cellData -> {
+            String employeePhoneValue = cellData.getValue().getPhoneNumber();
+            return new SimpleStringProperty(employeePhoneValue);
+        });
+
+        employeeEmailColumn.setCellValueFactory(cellData -> {
+            String employeeEmailValue = cellData.getValue().getEmailAddress();
+            return new SimpleStringProperty(employeeEmailValue);
+        });
+
+        employeeHireDateColumn.setCellValueFactory(cellData -> {
+            Date employeeHireDateValue = cellData.getValue().getHireDate();
+            return new SimpleObjectProperty<>(employeeHireDateValue);
+        });
+
+        employeeTable.setItems(FXCollections.observableArrayList(employees));
 
     }
 
