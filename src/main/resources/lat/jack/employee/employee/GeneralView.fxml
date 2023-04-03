@@ -30,14 +30,14 @@
                                  <children>
                                     <TableView fx:id="employeeTable" prefHeight="545.0" prefWidth="790.0">
                                       <columns>
-                                        <TableColumn fx:id="employeeIDColumn" prefWidth="75.0" text="Employee ID" />
-                                        <TableColumn fx:id="employeeNameColumn" prefWidth="92.0" text="Name" />
-                                          <TableColumn fx:id="employeePhoneColumn" prefWidth="91.0" text="Phone Number" />
+                                        <TableColumn fx:id="employeeIDColumn" prefWidth="39.0" text="ID" />
+                                        <TableColumn fx:id="employeeNameColumn" prefWidth="113.0" text="Name" />
                                           <TableColumn fx:id="employeeEmailColumn" prefWidth="75.0" text="Email" />
-                                          <TableColumn fx:id="employeeHireDateColumn" prefWidth="59.0" text="Hire Date" />
-                                          <TableColumn prefWidth="89.0" text="Role" />
-                                          <TableColumn prefWidth="83.0" text="Salary" />
-                                          <TableColumn prefWidth="110.0" text="View" />
+                                          <TableColumn fx:id="employeePhoneColumn" prefWidth="106.0" text="Phone Number" />
+                                          <TableColumn fx:id="employeeHireDateColumn" prefWidth="65.0" text="Hire Date" />
+                                          <TableColumn fx:id="employeeRoleCategoryColumn" prefWidth="98.0" text="Category" />
+                                          <TableColumn fx:id="employeeRoleColumn" prefWidth="95.0" text="Role" />
+                                          <TableColumn fx:id="employeeSalaryColumn" prefWidth="83.0" text="Salary" />
                                       </columns>
                                     </TableView>
                                     <AnchorPane prefHeight="545.0" prefWidth="182.0">
@@ -86,37 +86,37 @@
                                                 <HBox prefHeight="17.0" prefWidth="77.0">
                                                    <children>
                                                       <Label text="First Name: " />
-                                                      <Label text="{FIRST NAME VALUE}" />
+                                                      <Label fx:id="labelEmployeeFirstNameValue" text="{FIRST NAME VALUE}" />
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="0.0" prefWidth="600.0">
                                                    <children>
                                                       <Label text="Last Name: " />
-                                                      <Label text="{LAST_NAME_VALUE}" />
+                                                      <Label fx:id="labelEmployeeLastNameValue" text="{LAST_NAME_VALUE}" />
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="0.0" prefWidth="600.0">
                                                    <children>
                                                       <Label text="Email Address: " />
-                                                      <Label text="{EMPLOYEE_EMAIL_ADDRESS_VALUE}" />
+                                                      <Label fx:id="labelEmployeeEmailAddressValue" text="{EMPLOYEE_EMAIL_ADDRESS_VALUE}" />
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="0.0" prefWidth="600.0">
                                                    <children>
                                                       <Label text="Phone Number: " />
-                                                      <Label text="{MOBILE_NUMBER_VALUE}" />
+                                                      <Label fx:id="labelEmployeePhoneNumberValue" text="{MOBILE_NUMBER_VALUE}" />
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="0.0" prefWidth="600.0">
                                                    <children>
                                                       <Label text="Role Name: " />
-                                                      <Label text="{ROLE_NAME_VALUE}" />
+                                                      <Label fx:id="labelEmployeeRoleNameValue" text="{ROLE_NAME_VALUE}" />
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="0.0" prefWidth="600.0">
                                                    <children>
                                                       <Label text="Role Category: " />
-                                                      <Label text="{ROLE_CATEGORY_VALUE}" />
+                                                      <Label fx:id="labelEmployeeRoleCategoryValue" text="{ROLE_CATEGORY_VALUE}" />
                                                    </children>
                                                 </HBox>
                                              </children>
@@ -131,19 +131,19 @@
                                                 <HBox prefHeight="0.0" prefWidth="600.0">
                                                    <children>
                                                       <Label text="House Allowance: " />
-                                                      <Label text="{HOUSE_ALLOWANCE_VALUE}" />
+                                                      <Label fx:id="labelEmployeeHouseAllowanceValue" text="{HOUSE_ALLOWANCE_VALUE}" />
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="1.0" prefWidth="600.0">
                                                    <children>
                                                       <Label text="Traveling Allowance: " />
-                                                      <Label text="{TRAVELING_ALLOWANCE_VALUE}" />
+                                                      <Label fx:id="labelEmployeeTravellingAllowanceValue" text="{TRAVELING_ALLOWANCE_VALUE}" />
                                                    </children>
                                                 </HBox>
                                                 <HBox prefHeight="1.0" prefWidth="600.0">
                                                    <children>
                                                       <Label text="Health Allowance: " />
-                                                      <Label text="{HEALTH_ALLOWANCE_VALUE}" />
+                                                      <Label fx:id="labelEmployeeHealthAllowanceValue" text="{HEALTH_ALLOWANCE_VALUE}" />
                                                    </children>
                                                 </HBox>
                                              </children>

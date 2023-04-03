@@ -2,11 +2,9 @@ package lat.jack.employee.employee.Controllers;
 
 import com.j256.ormlite.dao.Dao;
 import javafx.beans.property.*;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import lat.jack.employee.employee.Database.Database;
 import lat.jack.employee.employee.Entities.Employees;
@@ -50,6 +48,37 @@ public class GeneralView {
     TableColumn<Employees, String> employeeEmailColumn;
     @FXML
     TableColumn<Employees, Date> employeeHireDateColumn;
+    @FXML
+    TableColumn<Employees, String> employeeRoleCategoryColumn;
+    @FXML
+    TableColumn<Employees, String> employeeRoleColumn;
+    @FXML
+    TableColumn<Employees, Double> employeeSalaryColumn;
+
+    @FXML
+    Label labelEmployeeFirstNameValue;
+    @FXML
+    Label labelEmployeeLastNameValue;
+    @FXML
+    Label labelEmployeeEmailAddressValue;
+    @FXML
+    Label labelEmployeePhoneNumberValue;
+    @FXML
+    Label labelEmployeeRoleNameValue;
+    @FXML
+    Label labelEmployeeRoleCategoryValue;
+
+    // Employee Benefits
+    @FXML
+    Label labelEmployeeHouseAllowanceValue;
+    @FXML
+    Label labelEmployeeTravellingAllowanceValue;
+    @FXML
+    Label labelEmployeeHealthAllowanceValue;
+
+    public Employees getSelectedEmployee() {
+        return employeeTable.getSelectionModel().getSelectedItem();
+    }
 
     @FXML
     protected void initialize() {
@@ -58,6 +87,13 @@ public class GeneralView {
 
         tabPaneGeneral.getSelectionModel().selectedItemProperty().addListener((ov, oldTab, newTab) -> {
             if (newTab == tabViewEmployee) {
+
+                if (this.getSelectedEmployee() == null) {
+                    tabPaneGeneral.getSelectionModel().select(oldTab);
+                    alert();
+                    return;
+                }
+
                 onTabViewEmployeeSelected();
             }
         });
@@ -77,8 +113,6 @@ public class GeneralView {
         }
 
         // Display employees data in table.
-
-        // Define relative table values.
 
         employeeIDColumn.setCellValueFactory(cellData -> {
             int idValue = cellData.getValue().getId();
@@ -104,12 +138,61 @@ public class GeneralView {
             return new SimpleObjectProperty<>(employeeHireDateValue);
         });
 
+        employeeRoleCategoryColumn.setCellValueFactory(cellData -> {
+            String employeeRoleCategoryValue = cellData.getValue().getEmployeeRole().getRoleCategory().getCategoryName();
+            return new SimpleStringProperty(employeeRoleCategoryValue);
+        });
+
+        employeeRoleColumn.setCellValueFactory(cellData -> {
+            String employeeRoleValue = cellData.getValue().getEmployeeRole().getRoleName();
+            return new SimpleStringProperty(employeeRoleValue);
+        });
+
+        employeeSalaryColumn.setCellValueFactory(cellData -> {
+            double employeeSalaryValue = cellData.getValue().getEmployeeRole().getStartingSalary();
+            return new SimpleDoubleProperty(employeeSalaryValue).asObject();
+        });
+
         employeeTable.setItems(FXCollections.observableArrayList(employees));
 
+        employeeTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                System.out.println("Selected: " + newSelection.getFirstName() + " " + newSelection.getLastName());
+            }
+        });
+
+    }
+
+    private void alert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText("Please select an employee first!");
+
+        alert.showAndWait();
     }
 
     protected void onTabViewEmployeeSelected() {
         System.out.println("View Employee tab selected!");
+
+        Employees selectedEmployee = getSelectedEmployee();
+
+        if (selectedEmployee == null) {
+            System.out.println("No employee selected!");
+            return;
+        }
+
+        labelEmployeeFirstNameValue.setText(selectedEmployee.getFirstName());
+        labelEmployeeLastNameValue.setText(selectedEmployee.getLastName());
+        labelEmployeeEmailAddressValue.setText(selectedEmployee.getEmailAddress());
+        labelEmployeePhoneNumberValue.setText(selectedEmployee.getPhoneNumber());
+        labelEmployeeRoleNameValue.setText(selectedEmployee.getEmployeeRole().getRoleName());
+        labelEmployeeRoleCategoryValue.setText(selectedEmployee.getEmployeeRole().getRoleCategory().getCategoryName());
+
+        labelEmployeeHouseAllowanceValue.setText(String.valueOf(selectedEmployee.getEmployeeRole().getRoleBenefits().getHousingAllowance()));
+        labelEmployeeTravellingAllowanceValue.setText(String.valueOf(selectedEmployee.getEmployeeRole().getRoleBenefits().getTravelingAllowance()));
+        labelEmployeeHealthAllowanceValue.setText(String.valueOf(selectedEmployee.getEmployeeRole().getRoleBenefits().getHealthAllowance()));
+
 
 
     }
