@@ -30,25 +30,26 @@
                                  <children>
                                     <TableView fx:id="employeeTable" prefHeight="545.0" prefWidth="790.0">
                                       <columns>
-                                        <TableColumn fx:id="employeeIDColumn" prefWidth="39.0" text="ID" />
-                                        <TableColumn fx:id="employeeNameColumn" prefWidth="113.0" text="Name" />
-                                          <TableColumn fx:id="employeeEmailColumn" prefWidth="75.0" text="Email" />
-                                          <TableColumn fx:id="employeePhoneColumn" prefWidth="106.0" text="Phone Number" />
-                                          <TableColumn fx:id="employeeHireDateColumn" prefWidth="65.0" text="Hire Date" />
-                                          <TableColumn fx:id="employeeRoleCategoryColumn" prefWidth="98.0" text="Category" />
-                                          <TableColumn fx:id="employeeRoleColumn" prefWidth="95.0" text="Role" />
-                                          <TableColumn fx:id="employeeSalaryColumn" prefWidth="83.0" text="Salary" />
+                                        <TableColumn fx:id="employeeIDColumn" prefWidth="39.0" text="ID" sortable="false"/>
+                                        <TableColumn fx:id="employeeNameColumn" prefWidth="113.0" text="Name" sortable="false"/>
+                                          <TableColumn fx:id="employeeEmailColumn" prefWidth="75.0" text="Email" sortable="false"/>
+                                          <TableColumn fx:id="employeePhoneColumn" prefWidth="106.0" text="Phone Number" sortable="false"/>
+                                          <TableColumn fx:id="employeeHireDateColumn" prefWidth="65.0" text="Hire Date" sortable="false"/>
+                                          <TableColumn fx:id="employeeRoleCategoryColumn" prefWidth="98.0" text="Category" sortable="false"/>
+                                          <TableColumn fx:id="employeeRoleColumn" prefWidth="95.0" text="Role" sortable="false"/>
+                                          <TableColumn fx:id="employeeSalaryColumn" prefWidth="83.0" text="Salary" sortable="false"/>
                                       </columns>
                                     </TableView>
                                     <AnchorPane prefHeight="545.0" prefWidth="182.0">
                                        <children>
-                                          <ComboBox layoutY="23.0" prefHeight="25.0" prefWidth="189.0" />
+                                          <ComboBox fx:id="comboBoxSearchBy" layoutY="23.0" prefHeight="25.0" prefWidth="189.0" />
                                           <Label layoutY="6.0" text="Search Category: " />
-                                          <TextField layoutY="61.0" prefHeight="25.0" prefWidth="130.0" />
-                                          <Button fx:id="buttonSearch" layoutX="137.0" layoutY="61.0" mnemonicParsing="false" prefHeight="25.0" text="Search" />
+                                          <TextField fx:id="inputSearchValue" layoutY="84.0" prefHeight="25.0" prefWidth="130.0" />
+                                          <Button fx:id="buttonSearch" layoutX="137.0" layoutY="84.0" mnemonicParsing="false" prefHeight="25.0" text="Search" />
                                           <Button fx:id="buttonAddEmployee" layoutX="8.0" layoutY="456.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="173.0" text="Add Employee" />
                                           <Button fx:id="buttonAddCategory" layoutX="96.0" layoutY="408.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="85.0" text="Add Category" />
                                           <Button fx:id="buttonAddRole" layoutX="8.0" layoutY="408.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="85.0" text="Add Role" />
+                                          <ComboBox fx:id="comboBoxSearchAlgorithm" layoutY="53.0" prefHeight="25.0" prefWidth="189.0" />
                                        </children>
                                     </AnchorPane>
                                  </children>
@@ -170,6 +171,11 @@
                   </AnchorPane>
             </content>
           </Tab>
+            <Tab text="Generate Payslip">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
    </children>

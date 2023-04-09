@@ -8,9 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import lat.jack.employee.employee.Database.Database;
 import lat.jack.employee.employee.Entities.Employees;
-import lat.jack.employee.employee.Events.General.onAddCategoryButtonClick;
-import lat.jack.employee.employee.Events.General.onAddEmployeeButtonClick;
-import lat.jack.employee.employee.Events.General.onAddRoleButtonClick;
+import lat.jack.employee.employee.Events.General.*;
 import lat.jack.employee.employee.Managers.ApplicationManager;
 
 import java.sql.SQLException;
@@ -76,6 +74,20 @@ public class GeneralView {
     @FXML
     Label labelEmployeeHealthAllowanceValue;
 
+    // Search
+
+    @FXML
+    public
+    ComboBox comboBoxSearchBy;
+    @FXML
+    public
+    ComboBox comboBoxSearchAlgorithm;
+    @FXML
+    public
+    TextField inputSearchValue;
+    @FXML
+    Button buttonSearch;
+
     public Employees getSelectedEmployee() {
         return employeeTable.getSelectionModel().getSelectedItem();
     }
@@ -98,10 +110,32 @@ public class GeneralView {
             }
         });
 
+        comboBoxSearchBy.getItems().addAll("ID");
+        comboBoxSearchBy.getSelectionModel().selectFirst();
+
+        comboBoxSearchAlgorithm.getItems().setAll("Binary Search", "Linear Search");
+        comboBoxSearchAlgorithm.getSelectionModel().selectFirst();
+
         buttonAddCategory.addEventFilter(MouseEvent.MOUSE_PRESSED, new onAddCategoryButtonClick(this));
         buttonAddRole.addEventFilter(MouseEvent.MOUSE_PRESSED, new onAddRoleButtonClick(this));
         buttonAddEmployee.addEventFilter(MouseEvent.MOUSE_PRESSED, new onAddEmployeeButtonClick(this));
+        buttonSearch.addEventFilter(MouseEvent.MOUSE_PRESSED, new onSearchButtonClick(this));
 
+        comboBoxSearchBy.getSelectionModel().selectedItemProperty().addListener(new onSearchByChanged(this));
+
+        setupEmployeeTable();
+        updateEmployeeTable(getAllEmployees());
+
+
+        employeeTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                System.out.println("Selected: " + newSelection.getFirstName() + " " + newSelection.getLastName());
+            }
+        });
+
+    }
+
+    public List<Employees> getAllEmployees() {
         Dao<Employees, Integer> employeeDao = Database.getEmployeeDao();
 
         List<Employees> employees;
@@ -112,7 +146,10 @@ public class GeneralView {
             throw new RuntimeException(e);
         }
 
-        // Display employees data in table.
+        return employees;
+    }
+
+    public void setupEmployeeTable() {
 
         employeeIDColumn.setCellValueFactory(cellData -> {
             int idValue = cellData.getValue().getId();
@@ -153,14 +190,11 @@ public class GeneralView {
             return new SimpleDoubleProperty(employeeSalaryValue).asObject();
         });
 
+    }
+
+    public void updateEmployeeTable(List<Employees> employees) {
+        employeeTable.getItems().clear();
         employeeTable.setItems(FXCollections.observableArrayList(employees));
-
-        employeeTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                System.out.println("Selected: " + newSelection.getFirstName() + " " + newSelection.getLastName());
-            }
-        });
-
     }
 
     private void alert() {
