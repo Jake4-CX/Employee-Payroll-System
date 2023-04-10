@@ -4,6 +4,7 @@ import com.j256.ormlite.dao.Dao;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import lat.jack.employee.employee.Database.Database;
@@ -88,6 +89,27 @@ public class GeneralView {
     @FXML
     Button buttonSearch;
 
+    // Group
+    @FXML
+    public
+    Group groupSelectedEmployee;
+    @FXML
+    Button buttonEditSelectedEmployee;
+    @FXML
+    Button buttonDeleteSelectedEmployee;
+    @FXML
+    public
+    Label outputSelectedIDLabel;
+    @FXML
+    public
+    Label outputSelectedNameLabel;
+    @FXML
+    public
+    Label outputSelectedCategoryLabel;
+    @FXML
+    public
+    Label outputSelectedRoleLabel;
+
     public Employees getSelectedEmployee() {
         return employeeTable.getSelectionModel().getSelectedItem();
     }
@@ -96,6 +118,7 @@ public class GeneralView {
     protected void initialize() {
         System.out.println("GeneralView initialized!");
         labelWelcomeName.setText("Welcome, " + ApplicationManager.getCurrentUser().getUserName() + "!");
+        groupSelectedEmployee.setVisible(false);
 
         tabPaneGeneral.getSelectionModel().selectedItemProperty().addListener((ov, oldTab, newTab) -> {
             if (newTab == tabViewEmployee) {
@@ -126,12 +149,9 @@ public class GeneralView {
         setupEmployeeTable();
         updateEmployeeTable(getAllEmployees());
 
-
-        employeeTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                System.out.println("Selected: " + newSelection.getFirstName() + " " + newSelection.getLastName());
-            }
-        });
+        employeeTable.getSelectionModel().selectedItemProperty().addListener(new onEmployeeSelectionChanged(this));
+        buttonEditSelectedEmployee.addEventFilter(MouseEvent.MOUSE_PRESSED, new onEditSelectedEmployeeButtonClick(this));
+        buttonDeleteSelectedEmployee.addEventFilter(MouseEvent.MOUSE_PRESSED, new onDeleteSelectedEmployeeButtonClick(this));
 
     }
 
