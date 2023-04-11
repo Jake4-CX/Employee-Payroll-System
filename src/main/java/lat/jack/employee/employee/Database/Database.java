@@ -17,7 +17,6 @@ public class Database {
     private static Dao<Employees, Integer> employeeDao;
     private static Dao<Addresses, Integer> addressDao;
     private static Dao<EmployeeRoles, Integer> employeeRoleDao;
-    private static Dao<EmployeesRoles, Integer> employeeRolesDao;
     private static Dao<EmployeesBenefits, Integer> employeeBenefitsDao;
     private static Dao<RoleBenefits, Integer> roleBenefitsDao;
     private static Dao<RoleCategories, Integer> roleCategoriesDao;
@@ -44,9 +43,6 @@ public class Database {
 
             employeeRoleDao = DaoManager.createDao(connectionSource, EmployeeRoles.class);
             TableUtils.createTableIfNotExists(connectionSource, EmployeeRoles.class);
-
-            employeeRolesDao = DaoManager.createDao(connectionSource, EmployeesRoles.class);
-            TableUtils.createTableIfNotExists(connectionSource, EmployeesRoles.class);
 
             employeeBenefitsDao = DaoManager.createDao(connectionSource, EmployeesBenefits.class);
             TableUtils.createTableIfNotExists(connectionSource, EmployeesBenefits.class);
@@ -114,19 +110,6 @@ public class Database {
         }
 
         return employeeRoleDao;
-    }
-
-    public static Dao<EmployeesRoles, Integer> getEmployeeRolesDao() {
-
-        if (employeeRolesDao == null) {
-            try {
-                employeeRolesDao = DaoManager.createDao(connectionSource, EmployeesRoles.class);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return employeeRolesDao;
     }
 
     public static Dao<EmployeesBenefits, Integer> getEmployeeBenefitsDao() {

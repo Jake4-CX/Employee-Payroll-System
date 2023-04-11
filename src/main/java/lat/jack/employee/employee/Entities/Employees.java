@@ -30,7 +30,10 @@ public class Employees {
     @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
     private EmployeeRoles employeeRole;
 
-    public Employees(String firstName, String lastName, String emailAddress, String phoneNumber, Date hireDate, Addresses address, EmployeeRoles employeeRole) {
+    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
+    private EmployeesBenefits employeeBenefits;
+
+    public Employees(String firstName, String lastName, String emailAddress, String phoneNumber, Date hireDate, Addresses address, EmployeeRoles employeeRole, EmployeesBenefits employeeBenefits) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
@@ -38,6 +41,7 @@ public class Employees {
         this.hireDate = hireDate;
         this.address = address;
         this.employeeRole = employeeRole;
+        this.employeeBenefits = employeeBenefits;
     }
 
     public Employees() {
@@ -101,5 +105,13 @@ public class Employees {
 
     public void setEmployeeRole(EmployeeRoles employeeRole) {
         this.employeeRole = employeeRole;
+    }
+
+    public EmployeesBenefits getEmployeeBenefits() {
+        return employeeBenefits;
+    }
+
+    public void setEmployeeBenefits(EmployeesBenefits employeeBenefits) {
+        this.employeeBenefits = employeeBenefits;
     }
 }

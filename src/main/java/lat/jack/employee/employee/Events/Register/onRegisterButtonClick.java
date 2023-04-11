@@ -4,6 +4,7 @@ import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import lat.jack.employee.employee.Controllers.RegisterView;
@@ -49,6 +50,9 @@ public class onRegisterButtonClick implements EventHandler<MouseEvent> {
 
                     if (response == 1) {
                         System.out.println("User created successfully");
+                        alertAccountCreated();
+                        ApplicationManager.switchScene("LoginView.fxml", (Node) mouseEvent.getSource());
+                        return;
 
                     } else {
                         System.out.println("User not created");
@@ -59,11 +63,29 @@ public class onRegisterButtonClick implements EventHandler<MouseEvent> {
                 e.printStackTrace();
             }
 
+            alertUserExists();
+
 
         } else {
             System.out.println("Both values are empty");
             bothValuesEmpty();
         }
+    }
+
+    private void alertAccountCreated() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Account created");
+        alert.setHeaderText("Account created successfully");
+        alert.setContentText("Please login to continue");
+        alert.showAndWait();
+    }
+
+    private void alertUserExists() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Cannot register");
+        alert.setHeaderText("User already exists");
+        alert.setContentText("Please enter a different username");
+        alert.showAndWait();
     }
 
     // Abstract function for both values are empty

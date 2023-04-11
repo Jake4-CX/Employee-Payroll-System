@@ -7,8 +7,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import lat.jack.employee.employee.Database.Database;
-import lat.jack.employee.employee.Events.User.onAddUserButtonClick;
-import lat.jack.employee.employee.Managers.ApplicationManager;
+import lat.jack.employee.employee.Events.AddEmployee.onAddEmployeeButtonClick;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class AddUserView {
+public class AddEmployeeView {
 
     // Employee
     @FXML
@@ -86,7 +85,7 @@ public class AddUserView {
         }
 
         // Events
-        buttonAddUser.addEventFilter(MouseEvent.MOUSE_PRESSED, new onAddUserButtonClick(this));
+        buttonAddUser.addEventFilter(MouseEvent.MOUSE_PRESSED, new onAddEmployeeButtonClick(this));
     }
 
     public String getInputFirstName() {

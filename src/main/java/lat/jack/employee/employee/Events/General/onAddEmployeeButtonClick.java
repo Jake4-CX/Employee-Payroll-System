@@ -28,7 +28,7 @@ public class onAddEmployeeButtonClick implements EventHandler<MouseEvent> {
 
         try {
 
-            Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("AddUserView.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("AddEmployeeView.fxml")));
             Stage stage = new Stage();
 
             stage.initModality(Modality.APPLICATION_MODAL);

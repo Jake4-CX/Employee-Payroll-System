@@ -8,24 +8,24 @@ public class EmployeesBenefits {
     private int id;
 
     @DatabaseField()
-    private Float employeeSalary;
+    private Double employeeSalary;
 
     @DatabaseField()
-    private Float employeeBonus;
+    private Double employeeBonus;
 
     @DatabaseField()
-    private Float employeeLoan;
+    private Double employeeLoan;
 
     @DatabaseField()
-    private Float housingAllowance;
+    private Double housingAllowance;
 
     @DatabaseField()
-    private Float travelingAllowance;
+    private Double travelingAllowance;
 
     @DatabaseField()
-    private Float healthAllowance;
+    private Double healthAllowance;
 
-    public EmployeesBenefits(Float employeeSalary, Float employeeBonus, Float employeeLoan, Float housingAllowance, Float travelingAllowance, Float healthAllowance) {
+    public EmployeesBenefits(Double employeeSalary, Double employeeBonus, Double employeeLoan, Double housingAllowance, Double travelingAllowance, Double healthAllowance) {
         this.employeeSalary = employeeSalary;
         this.employeeBonus = employeeBonus;
         this.employeeLoan = employeeLoan;
@@ -41,51 +41,51 @@ public class EmployeesBenefits {
         return id;
     }
 
-    public Float getEmployeeSalary() {
+    public Double getEmployeeSalary() {
         return employeeSalary;
     }
 
-    public void setEmployeeSalary(Float employeeSalary) {
+    public void setEmployeeSalary(Double employeeSalary) {
         this.employeeSalary = employeeSalary;
     }
 
-    public Float getEmployeeBonus() {
+    public Double getEmployeeBonus() {
         return employeeBonus;
     }
 
-    public void setEmployeeBonus(Float employeeBonus) {
+    public void setEmployeeBonus(Double employeeBonus) {
         this.employeeBonus = employeeBonus;
     }
 
-    public Float getEmployeeLoan() {
+    public Double getEmployeeLoan() {
         return employeeLoan;
     }
 
-    public void setEmployeeLoan(Float employeeLoan) {
+    public void setEmployeeLoan(Double employeeLoan) {
         this.employeeLoan = employeeLoan;
     }
 
-    public Float getHousingAllowance() {
+    public Double getHousingAllowance() {
         return housingAllowance;
     }
 
-    public void setHousingAllowance(Float housingAllowance) {
+    public void setHousingAllowance(Double housingAllowance) {
         this.housingAllowance = housingAllowance;
     }
 
-    public Float getTravelingAllowance() {
+    public Double getTravelingAllowance() {
         return travelingAllowance;
     }
 
-    public void setTravelingAllowance(Float travelingAllowance) {
+    public void setTravelingAllowance(Double travelingAllowance) {
         this.travelingAllowance = travelingAllowance;
     }
 
-    public Float getHealthAllowance() {
+    public Double getHealthAllowance() {
         return healthAllowance;
     }
 
-    public void setHealthAllowance(Float healthAllowance) {
+    public void setHealthAllowance(Double healthAllowance) {
         this.healthAllowance = healthAllowance;
     }
 }

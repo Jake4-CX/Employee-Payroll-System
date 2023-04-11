@@ -1,44 +1,45 @@
-package lat.jack.employee.employee.Events.User;
+package lat.jack.employee.employee.Events.AddEmployee;
 
 import com.j256.ormlite.dao.Dao;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
-import lat.jack.employee.employee.Controllers.AddUserView;
+import lat.jack.employee.employee.Controllers.AddEmployeeView;
 import lat.jack.employee.employee.Database.Database;
 import lat.jack.employee.employee.Entities.Addresses;
 import lat.jack.employee.employee.Entities.EmployeeRoles;
 import lat.jack.employee.employee.Entities.Employees;
+import lat.jack.employee.employee.Entities.EmployeesBenefits;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class onAddUserButtonClick implements EventHandler<MouseEvent> {
+public class onAddEmployeeButtonClick implements EventHandler<MouseEvent> {
 
-    private AddUserView addUserView;
+    private AddEmployeeView addEmployeeView;
 
-    public onAddUserButtonClick(AddUserView addUserView) {
-        this.addUserView = addUserView;
+    public onAddEmployeeButtonClick(AddEmployeeView addEmployeeView) {
+        this.addEmployeeView = addEmployeeView;
     }
 
     @Override
     public void handle(MouseEvent event) {
         System.out.println("Add user button clicked!");
 
-        String firstName = addUserView.getInputFirstName();
-        String lastName = addUserView.getInputLastName();
-        String email = addUserView.getInputEmailAddress();
-        String phoneNumber = addUserView.getInputPhoneNumber();
-        LocalDate hireDate = addUserView.getInputHireDate();
-        String employeeRole = addUserView.getInputEmployeeRole();
+        String firstName = addEmployeeView.getInputFirstName();
+        String lastName = addEmployeeView.getInputLastName();
+        String email = addEmployeeView.getInputEmailAddress();
+        String phoneNumber = addEmployeeView.getInputPhoneNumber();
+        LocalDate hireDate = addEmployeeView.getInputHireDate();
+        String employeeRole = addEmployeeView.getInputEmployeeRole();
 
         // Address
-        String streetName = addUserView.getInputStreetName();
-        String streetRegion = addUserView.getInputStreetRegion();
-        String streetCity = addUserView.getInputStreetCity();
-        String streetPostCode = addUserView.getInputStreetPostCode();
-        String streetCountry = addUserView.getInputStreetCountry();
+        String streetName = addEmployeeView.getInputStreetName();
+        String streetRegion = addEmployeeView.getInputStreetRegion();
+        String streetCity = addEmployeeView.getInputStreetCity();
+        String streetPostCode = addEmployeeView.getInputStreetPostCode();
+        String streetCountry = addEmployeeView.getInputStreetCountry();
 
         System.out.println("First name: " + firstName);
         System.out.println("Last name: " + lastName);
@@ -56,30 +57,6 @@ public class onAddUserButtonClick implements EventHandler<MouseEvent> {
             System.out.println("One or more fields are empty!");
             inputEmpty();
             return;
-        }
-
-        Addresses address = new Addresses();
-        address.setStreetName(streetName);
-        address.setAddressRegion(streetRegion);
-        address.setAddressCity(streetCity);
-        address.setPostalCode(streetPostCode);
-        address.setCountry(streetCountry);
-
-        // Save address
-
-        Dao<Addresses, Integer> addressesDao = Database.getAddressDao();
-
-        try {
-            int response = addressesDao.create(address);
-
-            if (response == 0) {
-                System.out.println("Address not saved!");
-                addressNotSaved();
-                return;
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         // Get EmployeeRole
@@ -105,6 +82,58 @@ public class onAddUserButtonClick implements EventHandler<MouseEvent> {
             return;
         }
 
+        // Got employee role
+
+        Addresses address = new Addresses();
+        address.setStreetName(streetName);
+        address.setAddressRegion(streetRegion);
+        address.setAddressCity(streetCity);
+        address.setPostalCode(streetPostCode);
+        address.setCountry(streetCountry);
+
+        // Save address
+
+        Dao<Addresses, Integer> addressesDao = Database.getAddressDao();
+
+        try {
+            int response = addressesDao.create(address);
+
+            if (response == 0) {
+                System.out.println("Address not saved!");
+                addressNotSaved();
+                return;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // Making Employee's personal EmployeesBenefits
+
+        EmployeesBenefits employeesBenefits = new EmployeesBenefits();
+        employeesBenefits.setEmployeeBonus(0.00);
+        employeesBenefits.setEmployeeLoan(0.00);
+        employeesBenefits.setEmployeeSalary(employeeRoles.getStartingSalary());
+        employeesBenefits.setHousingAllowance(employeeRoles.getRoleBenefits().getHousingAllowance());
+        employeesBenefits.setTravelingAllowance(employeeRoles.getRoleBenefits().getTravelingAllowance());
+        employeesBenefits.setHealthAllowance(employeeRoles.getRoleBenefits().getHealthAllowance());
+
+        // Save employeesRole
+
+        Dao<EmployeesBenefits, Integer> employeesBenefitsDao = Database.getEmployeeBenefitsDao();
+
+        try {
+            int response = employeesBenefitsDao.create(employeesBenefits);
+
+            if (response != 1) {
+                System.out.println("Failed to add employees benefits to database");
+                employeeNotSaved();
+                return;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         Employees employee = new Employees();
         employee.setFirstName(firstName);
         employee.setLastName(lastName);
@@ -113,6 +142,7 @@ public class onAddUserButtonClick implements EventHandler<MouseEvent> {
         employee.setHireDate(Date.from(hireDate.atStartOfDay().atZone(java.time.ZoneId.systemDefault()).toInstant()));
         employee.setEmployeeRole(employeeRoles);
         employee.setAddress(address);
+        employee.setEmployeeBenefits(employeesBenefits);
 
         // Save employee
 
