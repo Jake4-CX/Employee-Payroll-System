@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import lat.jack.employee.employee.Controllers.GeneralView;
 import lat.jack.employee.employee.Entities.Employees;
+import lat.jack.employee.employee.Managers.ApplicationManager;
 
 public class onEmployeeSelectionChanged implements ChangeListener<Employees> {
 
@@ -17,6 +18,7 @@ public class onEmployeeSelectionChanged implements ChangeListener<Employees> {
     public void changed(ObservableValue<? extends Employees> observable, Employees oldValue, Employees newValue) {
         if (newValue != null) {
             System.out.println("Selected: " + newValue.getFirstName() + " " + newValue.getLastName());
+            ApplicationManager.setSelectedEmployee(newValue);
             generalView.groupSelectedEmployee.setVisible(true);
 
             generalView.outputSelectedIDLabel.setText(String.valueOf(newValue.getId()));

@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lat.jack.employee.employee.Database.Database;
+import lat.jack.employee.employee.Entities.Employees;
 import lat.jack.employee.employee.Entities.Users;
 import lat.jack.employee.employee.Main;
 
@@ -18,6 +19,8 @@ public class ApplicationManager {
     private static Main main;
 
     protected static Users currentUser;
+
+    protected static Employees selectedEmployee;
 
     public ApplicationManager(Main main) {
 
@@ -81,5 +84,13 @@ public class ApplicationManager {
     public static void setCurrentUser(Users user) {
         System.out.println("UserID: " + user.getId());
         currentUser = user;
+    }
+
+    public static Employees getSelectedEmployee() {
+        return selectedEmployee;
+    }
+
+    public static void setSelectedEmployee(Employees employee) {
+        selectedEmployee = employee;
     }
 }

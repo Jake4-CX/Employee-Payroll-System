@@ -51,7 +51,7 @@
                                           <Button fx:id="buttonAddCategory" layoutX="96.0" layoutY="408.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="85.0" text="Add Category" />
                                           <Button fx:id="buttonAddRole" layoutX="8.0" layoutY="408.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="85.0" text="Add Role" />
                                           <ComboBox fx:id="comboBoxSearchAlgorithm" layoutY="53.0" prefHeight="25.0" prefWidth="189.0" />
-                                          <Group fx:id="groupSelectedEmployee" layoutX="8.0" layoutY="146.0">
+                                          <Group fx:id="groupSelectedEmployee" layoutX="8.0" layoutY="175.0">
                                              <children>
                                                 <VBox prefHeight="100.0" prefWidth="171.0">
                                                    <children>
@@ -89,6 +89,12 @@
                                                 </VBox>
                                              </children>
                                           </Group>
+                                          <HBox alignment="CENTER" layoutX="8.0" layoutY="109.0" prefHeight="35.0" prefWidth="170.0" spacing="5.0">
+                                             <children>
+                                                <Button fx:id="buttonEditSelectedEmployee1" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="ASC" />
+                                                <Button fx:id="buttonDeleteSelectedEmployee1" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="DESC" />
+                                             </children>
+                                          </HBox>
                                        </children>
                                     </AnchorPane>
                                  </children>

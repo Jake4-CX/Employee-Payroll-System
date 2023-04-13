@@ -111,7 +111,8 @@ public class GeneralView {
     Label outputSelectedRoleLabel;
 
     public Employees getSelectedEmployee() {
-        return employeeTable.getSelectionModel().getSelectedItem();
+        ApplicationManager.setSelectedEmployee(employeeTable.getSelectionModel().getSelectedItem());
+        return ApplicationManager.getSelectedEmployee();
     }
 
     @FXML
@@ -206,7 +207,7 @@ public class GeneralView {
         });
 
         employeeSalaryColumn.setCellValueFactory(cellData -> {
-            double employeeSalaryValue = cellData.getValue().getEmployeeRole().getStartingSalary();
+            double employeeSalaryValue = cellData.getValue().getEmployeeBenefits().getEmployeeSalary();
             return new SimpleDoubleProperty(employeeSalaryValue).asObject();
         });
 
