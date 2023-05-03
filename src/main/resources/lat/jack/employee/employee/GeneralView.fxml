@@ -91,8 +91,8 @@
                                           </Group>
                                           <HBox alignment="CENTER" layoutX="8.0" layoutY="109.0" prefHeight="35.0" prefWidth="170.0" spacing="5.0">
                                              <children>
-                                                <Button fx:id="buttonEditSelectedEmployee1" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="ASC" />
-                                                <Button fx:id="buttonDeleteSelectedEmployee1" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="DESC" />
+                                                <Button fx:id="buttonSortAscend" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="ASC" />
+                                                <Button fx:id="buttonSortDescend" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="DESC" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -216,9 +216,103 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Generate Payslip">
+            <Tab fx:id="tabViewGeneratePayslip" text="Generate Payslip">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <BorderPane prefHeight="570.0" prefWidth="1000.0">
+                           <center>
+                              <HBox BorderPane.alignment="CENTER">
+                                 <children>
+                                    <VBox prefHeight="522.0" prefWidth="518.0">
+                                       <children>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="579.0" text="Employee Details" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <VBox>
+                                             <children>
+                                                <HBox prefHeight="0.0" prefWidth="600.0">
+                                                   <children>
+                                                      <Label text="ID: " />
+                                                      <Label fx:id="labelPayslipEmployeeIDValue" text="{EMPLOYEE_ID_VALUE}" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="17.0" prefWidth="77.0">
+                                                   <children>
+                                                      <Label text="First Name: " />
+                                                      <Label fx:id="labelPayslipFirstNameValue" text="{FIRST NAME VALUE}" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="0.0" prefWidth="600.0">
+                                                   <children>
+                                                      <Label text="Last Name: " />
+                                                      <Label fx:id="labelPayslipLastNameValue" text="{LAST_NAME_VALUE}" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="0.0" prefWidth="600.0">
+                                                   <children>
+                                                      <Label text="Role Name: " />
+                                                      <Label fx:id="labelPayslipRoleNameValue" text="{ROLE_NAME_VALUE}" />
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="0.0" prefWidth="600.0">
+                                                   <children>
+                                                      <Label text="Role Category: " />
+                                                      <Label fx:id="labelPayslipRoleCategoryValue" text="{ROLE_CATEGORY_VALUE}" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <VBox prefHeight="71.0" prefWidth="518.0">
+                                             <children>
+                                                <HBox prefHeight="10.0" prefWidth="518.0">
+                                                   <children>
+                                                      <Label prefWidth="150.0" text="Days worked (In a Month): " />
+                                                      <TextField fx:id="inputDaysWorkedValue" />
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </HBox>
+                                                <HBox prefHeight="7.0" prefWidth="518.0">
+                                                   <children>
+                                                      <Label prefWidth="150.0" text="Overtime (Hours): " />
+                                                      <TextField fx:id="inputOvertimeHoursValue" />
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <VBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="25.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                          <Button fx:id="buttonGeneratePayslip" mnemonicParsing="false" prefHeight="40.0" prefWidth="104.0" text="Generate" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="522.0" prefWidth="490.0">
+                                       <children>
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+                                 </padding>
+                              </HBox>
+                           </center>
+                        </BorderPane>
+                     </children></AnchorPane>
               </content>
             </Tab>
         </tabs>

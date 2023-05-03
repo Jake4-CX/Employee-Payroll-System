@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="454.0" prefWidth="328.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lat.jack.employee.employee.Controllers.PayslipView">
    <children>
-      <AnchorPane layoutX="16.0" layoutY="56.0" prefHeight="342.0" prefWidth="299.0">
+      <AnchorPane layoutX="14.0" layoutY="56.0" prefHeight="342.0" prefWidth="299.0">
          <children>
             <VBox layoutX="25.0" layoutY="37.0" prefHeight="208.0" prefWidth="250.0">
                <children>
@@ -20,8 +20,31 @@
                   </Label>
                   <HBox alignment="CENTER" prefHeight="0.0" prefWidth="234.0" spacing="5.0">
                      <children>
-                        <Label text="Salary: " />
-                        <Label text="\%Salary%" />
+                        <Label text="Yearly Salary: " />
+                        <Label fx:id="labelYearlySalary" text="\%Salary%" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="234.0" spacing="5.0">
+                     <children>
+                        <Label text="Hours worked: " />
+                        <Label fx:id="labelHoursWorked" text="\%Hours%" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="234.0" spacing="5.0">
+                     <children>
+                        <Label text="Base Salary:" />
+                        <Label fx:id="labelBaseSalary" text="\%Base_Salary%" />
+                     </children>
+                  </HBox>
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="250.0" text="Overtime">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="234.0" spacing="5.0">
+                     <children>
+                        <Label text="Overtime: " />
+                        <Label fx:id="labelOvertimeHours" text="\%Overtime_Hours%" />
                      </children>
                   </HBox>
                   <Label alignment="CENTER" prefHeight="17.0" prefWidth="250.0" text="Allowances">
@@ -32,19 +55,30 @@
                   <HBox alignment="CENTER" prefHeight="0.0" prefWidth="234.0" spacing="5.0">
                      <children>
                         <Label text="Household Allowance: " />
-                        <Label text="\%HH_Allowance%" />
+                        <Label fx:id="labelHousingAllowance" text="\%HH_Allowance%" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="0.0" prefWidth="234.0" spacing="5.0">
                      <children>
                         <Label text="Traveling Allowance: " />
-                        <Label text="\%Travel_Allowance%" />
+                        <Label fx:id="labelTravelingAllowance" text="\%Travel_Allowance%" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="0.0" prefWidth="234.0" spacing="5.0">
                      <children>
                         <Label text="Health Allowance: " />
-                        <Label text="\%Health_Allowance%" />
+                        <Label fx:id="labelHealthAllowance" text="\%Health_Allowance%" />
+                     </children>
+                  </HBox>
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="250.0" text="Gross Salary">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="234.0" spacing="5.0">
+                     <children>
+                        <Label text="Gross Salary:" />
+                        <Label fx:id="labelGrossSalary" text="\%Gross_Salary%" />
                      </children>
                   </HBox>
                   <Label alignment="CENTER" prefHeight="17.0" prefWidth="250.0" text="Deductions">
@@ -55,25 +89,25 @@
                   <HBox alignment="CENTER" prefHeight="0.0" prefWidth="234.0" spacing="5.0">
                      <children>
                         <Label text="Tax:" />
-                        <Label text="\%Tax_deduction%" />
+                        <Label fx:id="labelTax" text="\%Tax_deduction%" />
                      </children>
                   </HBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total Salary" textAlignment="CENTER" wrappingWidth="250.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Net Salary" textAlignment="CENTER" wrappingWidth="250.0">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Text>
                   <HBox alignment="CENTER" prefHeight="0.0" prefWidth="234.0" spacing="5.0">
                      <children>
-                        <Label text="Salary: " />
-                        <Label text="\%Final_Salary%" />
+                        <Label text="Net Salary: " />
+                        <Label fx:id="labelNetSalary" text="\%Net_Salary%" />
                      </children>
                   </HBox>
                </children>
             </VBox>
          </children>
       </AnchorPane>
-      <Text layoutX="40.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payslip" textAlignment="CENTER" wrappingWidth="250.0">
+      <Text layoutX="41.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payslip" textAlignment="CENTER" wrappingWidth="250.0">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
