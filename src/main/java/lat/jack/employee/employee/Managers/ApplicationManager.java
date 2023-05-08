@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lat.jack.employee.employee.Database.Database;
 import lat.jack.employee.employee.Entities.Employees;
+import lat.jack.employee.employee.Entities.PSInfo;
 import lat.jack.employee.employee.Entities.Users;
 import lat.jack.employee.employee.Main;
 
@@ -21,6 +22,7 @@ public class ApplicationManager {
     protected static Users currentUser;
 
     protected static Employees selectedEmployee;
+    protected static PSInfo psInfo;
 
     public ApplicationManager(Main main) {
 
@@ -92,5 +94,13 @@ public class ApplicationManager {
 
     public static void setSelectedEmployee(Employees employee) {
         selectedEmployee = employee;
+    }
+
+    public static void setPSInfo(PSInfo psInfo) {
+        ApplicationManager.psInfo = psInfo;
+    }
+
+    public static PSInfo getPSInfo() {
+        return psInfo;
     }
 }

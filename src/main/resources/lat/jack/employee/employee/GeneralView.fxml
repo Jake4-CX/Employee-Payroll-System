@@ -10,6 +10,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -313,6 +314,15 @@
                            </center>
                         </BorderPane>
                      </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="tabViewTreeView" text="Tree View">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TreeView fx:id="employeeTreeView" layoutX="33.0" layoutY="51.0" prefHeight="469.0" prefWidth="935.0" />
+                     </children>
+                  </AnchorPane>
               </content>
             </Tab>
         </tabs>

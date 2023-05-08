@@ -7,8 +7,11 @@ import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import lat.jack.employee.employee.DataStructures.*;
 import lat.jack.employee.employee.Database.Database;
+import lat.jack.employee.employee.Entities.EmployeeRoles;
 import lat.jack.employee.employee.Entities.Employees;
+import lat.jack.employee.employee.Entities.RoleCategories;
 import lat.jack.employee.employee.Events.General.*;
 import lat.jack.employee.employee.Managers.ApplicationManager;
 
@@ -124,8 +127,10 @@ public class GeneralView {
     @FXML
     Button buttonGeneratePayslip;
     @FXML
+    public
     TextField inputDaysWorkedValue;
     @FXML
+    public
     TextField inputOvertimeHoursValue;
     @FXML
     Label labelPayslipEmployeeIDValue;
@@ -137,6 +142,14 @@ public class GeneralView {
     Label labelPayslipRoleNameValue;
     @FXML
     Label labelPayslipRoleCategoryValue;
+
+    // Tree View
+
+    @FXML
+    Tab tabViewTreeView;
+
+    @FXML
+    TreeView employeeTreeView;
 
     public Employees getSelectedEmployee() {
         ApplicationManager.setSelectedEmployee(employeeTable.getSelectionModel().getSelectedItem());
@@ -159,9 +172,7 @@ public class GeneralView {
                 }
 
                 onTabViewEmployeeSelected();
-            }
-
-            if (newTab == tabViewGeneratePayslip) {
+            } else if (newTab == tabViewGeneratePayslip) {
                 if (this.getSelectedEmployee() == null) {
                     tabPaneGeneral.getSelectionModel().select(oldTab);
                     alert();
@@ -169,6 +180,8 @@ public class GeneralView {
                 }
 
                 onTabViewGeneratePayslipSelected();
+            } else if (newTab == tabViewTreeView) {
+                generateTree();
             }
         });
 
@@ -356,4 +369,55 @@ public class GeneralView {
         inputDaysWorkedValue.setText("20");
         inputOvertimeHoursValue.setText("0");
     }
+
+    public void generateTree() {
+
+        Dao<RoleCategories, Integer> roleCategoriesDao = Database.getRoleCategoriesDao();
+        Dao<EmployeeRoles, Integer> employeeRolesDao = Database.getEmployeeRoleDao();
+        Dao<Employees, Integer> employeeDao = Database.getEmployeeDao();
+
+        TreeNode<String> root = new TreeNode<String>(null);
+
+        try {
+            List<RoleCategories> categories = roleCategoriesDao.queryForAll();
+
+            for (RoleCategories category : categories) {
+                TreeNode<String> categoryNode = new TreeNode<>(category.getCategoryName());
+                root.addChild(categoryNode);
+
+                List<EmployeeRoles> roles = employeeRolesDao.queryForEq("roleCategory_id", category.getId());
+                for (EmployeeRoles role : roles) {
+                    TreeNode<String> roleNode = new TreeNode<>(role.getRoleName());
+                    categoryNode.addChild(roleNode);
+
+                    List<Employees> employees = employeeDao.queryForEq("employeeRole_id", role.getId());
+                    for (Employees employee : employees) {
+                        TreeNode<String> employeeNode = new TreeNode<>(employee.getFirstName() + " " + employee.getLastName());
+                        roleNode.addChild(employeeNode);
+                    }
+                }
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        TreeItem<String> rootItem = convertToTreeItem(root);
+
+        employeeTreeView.setRoot(rootItem);
+
+    }
+
+    private TreeItem<String> convertToTreeItem(TreeNode<String> treeNode) {
+        TreeItem<String> treeItem = new TreeItem<>(treeNode.getData());
+        treeItem.setExpanded(true);
+
+        for (TreeNode<String> childNode : treeNode.getChildren()) {
+            treeItem.getChildren().add(convertToTreeItem(childNode));
+        }
+
+        return treeItem;
+    }
+
+
 }
