@@ -8,6 +8,7 @@ module lat.jack.employee.employee {
 
     opens lat.jack.employee.employee.Entities to ormlitebuild;
 
+    exports lat.jack.employee.employee.DataStructures;
     opens lat.jack.employee.employee to javafx.fxml;
     exports lat.jack.employee.employee;
     exports lat.jack.employee.employee.Controllers;

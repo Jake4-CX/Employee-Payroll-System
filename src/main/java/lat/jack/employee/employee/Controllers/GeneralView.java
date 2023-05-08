@@ -376,7 +376,7 @@ public class GeneralView {
         Dao<EmployeeRoles, Integer> employeeRolesDao = Database.getEmployeeRoleDao();
         Dao<Employees, Integer> employeeDao = Database.getEmployeeDao();
 
-        TreeNode<String> root = new TreeNode<String>(null);
+        TreeNode<String> root = new TreeNode<String>("Categories");
 
         try {
             List<RoleCategories> categories = roleCategoriesDao.queryForAll();

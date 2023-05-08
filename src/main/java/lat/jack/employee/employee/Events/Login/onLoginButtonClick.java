@@ -40,17 +40,18 @@ public class onLoginButtonClick implements EventHandler<MouseEvent> {
                 if (BCrypt.verifyer().verify(userPassword.toCharArray(), user.getUserPassword()).verified) {
                     // User successfully logged in
                     System.out.println("You have successfully logged in");
+                    loginView.getTaskQueue().addToQueue("Login Success!");
                     ApplicationManager.setCurrentUser(user);
 
                     ApplicationManager.switchScene("GeneralView.fxml", (Node) mouseEvent.getSource(), 1000, 600);
                 } else {
                     System.out.println("User exists in database - but wrong password");
-                    invalidLogin();
+                    loginView.getTaskQueue().addToQueue("Invalid User/Pass");
                 }
             } else {
                 // User does not exist - display error message alert - 'Wrong username or password'
                 System.out.println("User does not exist in database");
-                invalidLogin();
+                loginView.getTaskQueue().addToQueue("Invalid User/Pass");
 
             }
 
@@ -60,13 +61,14 @@ public class onLoginButtonClick implements EventHandler<MouseEvent> {
 
     }
 
-    public void invalidLogin() {
-        // Display error message alert - 'Wrong username or password'
-
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Invalid Login");
-        alert.setHeaderText("Wrong username or password");
-        alert.setContentText("Please enter a valid username and password");
-        alert.showAndWait();
-    }
+//    Replaced with a toaster w/ FIFO Queue
+//    public void invalidLogin() {
+//        // Display error message alert - 'Wrong username or password'
+//
+//        Alert alert = new Alert(Alert.AlertType.ERROR);
+//        alert.setTitle("Invalid Login");
+//        alert.setHeaderText("Wrong username or password");
+//        alert.setContentText("Please enter a valid username and password");
+//        alert.showAndWait();
+//    }
 }
