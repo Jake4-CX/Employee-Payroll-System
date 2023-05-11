@@ -30,6 +30,76 @@ public class EmployeeSort {
         return sortedEmployees;
     }
 
+    public static List<Employees> mergeSort(List<Employees> employeesList) {
+        if (employeesList.size() <= 1) {
+            return employeesList;
+        }
+
+        int middle = employeesList.size() / 2;
+        List<Employees> left = mergeSort(employeesList.subList(0, middle));
+        List<Employees> right = mergeSort(employeesList.subList(middle, employeesList.size()));
+
+        return merge(left, right);
+    }
+
+    private static List<Employees> merge(List<Employees> left, List<Employees> right) {
+        List<Employees> merged = new ArrayList<>();
+        int leftIndex = 0;
+        int rightIndex = 0;
+
+        while (leftIndex < left.size() && rightIndex < right.size()) {
+            if (left.get(leftIndex).getId() <= right.get(rightIndex).getId()) {
+                merged.add(left.get(leftIndex));
+                leftIndex++;
+            } else {
+                merged.add(right.get(rightIndex));
+                rightIndex++;
+            }
+        }
+
+        while (leftIndex < left.size()) {
+            merged.add(left.get(leftIndex));
+            leftIndex++;
+        }
+
+        while (rightIndex < right.size()) {
+            merged.add(right.get(rightIndex));
+            rightIndex++;
+        }
+
+        return merged;
+    }
+
+    public static List<Employees> quickSortDescending(List<Employees> employeesList) {
+        if (employeesList.size() <= 1) {
+            return employeesList;
+        }
+
+        int pivotIndex = employeesList.size() / 2;
+        Employees pivot = employeesList.get(pivotIndex);
+        List<Employees> less = new ArrayList<>();
+        List<Employees> greater = new ArrayList<>();
+
+        for (int i = 0; i < employeesList.size(); i++) {
+            if (i == pivotIndex) {
+                continue;
+            }
+
+            Employees employee = employeesList.get(i);
+            if (employee.getId() >= pivot.getId()) {
+                less.add(employee);
+            } else {
+                greater.add(employee);
+            }
+        }
+
+        List<Employees> sorted = new ArrayList<>(quickSortDescending(less));
+        sorted.add(pivot);
+        sorted.addAll(quickSortDescending(greater));
+
+        return sorted;
+    }
+
     public static List<Employees> bubbleSortDescending(List<Employees> employeesList) {
         int n = employeesList.size();
         boolean swapped;

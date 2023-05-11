@@ -21,7 +21,7 @@ public class onSortAscendButtonClick implements EventHandler<MouseEvent> {
         System.out.println("Sort Ascend button clicked!");
 
         List<Employees> employeesList = generalView.getAllEmployees();
-        generalView.updateEmployeeTable(EmployeeSort.bucketSort(employeesList));
+        generalView.updateEmployeeTable(EmployeeSort.mergeSort(employeesList));
     }
 
 }

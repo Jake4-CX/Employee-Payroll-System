@@ -21,7 +21,7 @@ public class onSortDescendButtonClick implements EventHandler<MouseEvent> {
         System.out.println("Sort Descend button clicked!");
 
         List<Employees> employeesList = generalView.getAllEmployees();
-        generalView.updateEmployeeTable(EmployeeSort.bubbleSortDescending(employeesList));
+        generalView.updateEmployeeTable(EmployeeSort.quickSortDescending(employeesList));
 
     }
 

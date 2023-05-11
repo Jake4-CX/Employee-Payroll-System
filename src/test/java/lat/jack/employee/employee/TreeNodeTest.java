@@ -15,7 +15,7 @@ public class TreeNodeTest {
         // Test getData
         assertEquals("root", root.getData());
 
-        // Test addChild and getChildren
+        // Test addChild to check if getChildren returns the correct values
         TreeNode<String> child1 = new TreeNode<>("child1");
         TreeNode<String> child2 = new TreeNode<>("child2");
         root.addChild(child1);

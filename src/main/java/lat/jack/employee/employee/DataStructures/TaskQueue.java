@@ -36,10 +36,10 @@ public class TaskQueue {
                 try {
                     String message;
                     while ((message = getNextMessage()) == null) {
-                        Thread.sleep(50); // Wait for 50ms if queue is empty
+                        Thread.sleep(50);
                     }
                     toaster.toaster(message);
-                    Thread.sleep(3000); // Wait 3 seconds before executing next task
+                    Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

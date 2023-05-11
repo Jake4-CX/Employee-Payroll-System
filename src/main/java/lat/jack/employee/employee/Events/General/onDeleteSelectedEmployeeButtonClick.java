@@ -1,10 +1,14 @@
 package lat.jack.employee.employee.Events.General;
 
+import com.j256.ormlite.dao.Dao;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import lat.jack.employee.employee.Controllers.GeneralView;
+import lat.jack.employee.employee.Database.Database;
+import lat.jack.employee.employee.Entities.Employees;
+import lat.jack.employee.employee.Managers.ApplicationManager;
 
 public class onDeleteSelectedEmployeeButtonClick implements EventHandler<MouseEvent>  {
 
@@ -24,7 +28,22 @@ public class onDeleteSelectedEmployeeButtonClick implements EventHandler<MouseEv
 
             System.out.println("Deleting employee with ID: " + generalView.getSelectedEmployee().getId());
 
-            // TODO: Delete employee from database
+            // Delete employee from database
+
+            Employees selectedEmployee = ApplicationManager.getSelectedEmployee();
+
+            Dao<Employees, Integer> employeesDao = Database.getEmployeeDao();
+
+            try {
+                if (employeesDao.delete(selectedEmployee) == 1) {
+                    deletedEmployee();
+                } else {
+                    couldNotDeleteEmployee();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                couldNotDeleteEmployee();
+            }
 
             // Update table - potentially use an Algorithm that the assignment wants
             generalView.updateEmployeeTable(generalView.getAllEmployees());
@@ -44,5 +63,23 @@ public class onDeleteSelectedEmployeeButtonClick implements EventHandler<MouseEv
 
         return alert.getResult();
 
+    }
+
+    private void couldNotDeleteEmployee() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Could not delete employee!");
+        alert.setContentText("Please try again later.");
+
+        alert.showAndWait();
+    }
+
+    private void deletedEmployee() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText("Employee deleted!");
+        alert.setContentText("Employee has been deleted, please close this window.");
+
+        alert.showAndWait();
     }
 }

@@ -15,6 +15,7 @@ public class LinearSearchTest {
 
         for (int i = 0; i < keys.length; i++) {
             int result = EmployeeSearch.linearSearch(arr, keys[i]);
+            System.out.println("Key: " + keys[i] + ", Result: " + result);
             assertEquals(expected[i], result);
         }
 
